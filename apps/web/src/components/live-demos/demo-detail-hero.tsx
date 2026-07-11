@@ -128,3 +128,5 @@ export function DemoDetailHero({ demo }: DemoDetailHeroProps) {
               </Container>
         </Section>
       );
+
+}
