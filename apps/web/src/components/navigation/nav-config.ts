@@ -24,6 +24,7 @@ export interface NavGroup {
   label: string;
   href?: string;
   description?: string;
+  icon?: LucideIcon;
   items?: NavLink[];
 }
 
