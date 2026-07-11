@@ -44,5 +44,3 @@ export const INDUSTRIES_LIST = [
   "Accounting Firms",
   "AI Startups",
 ] as const;
-
-export const NAV_HEIGHT_PX = 80;
