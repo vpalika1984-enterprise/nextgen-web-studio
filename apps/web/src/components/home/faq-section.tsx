@@ -37,7 +37,9 @@ const FAQS: FaqItem[] = [
  *
  * Single-open accordion answering common pre-sales questions. Built with
  * plain state + Framer Motion height animation rather than a headless UI
- * dependency to keep the bundle lean.
+ * dependency to keep the bundle lean. Each trigger/panel pair is linked via
+ * matching id/aria-controls/aria-labelledby so assistive technology can
+ * associate the question with its answer per the WAI-ARIA accordion pattern.
  */
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -55,18 +57,24 @@ export function FaqSection() {
         <div className="mt-12 divide-y divide-border rounded-2xl border border-border bg-card">
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
+            const triggerId = `faq-trigger-${index}`;
+            const panelId = `faq-panel-${index}`;
+
             return (
               <div key={faq.question} className="px-6">
                 <button
                   type="button"
+                  id={triggerId}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="flex w-full items-center justify-between gap-4 py-5 text-left"
                   aria-expanded={isOpen}
+                  aria-controls={panelId}
                 >
                   <span className="text-sm font-medium text-foreground">
                     {faq.question}
                   </span>
                   <Plus
+                    aria-hidden="true"
                     className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${
                       isOpen ? "rotate-45" : ""
                     }`}
@@ -75,6 +83,9 @@ export function FaqSection() {
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={triggerId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
