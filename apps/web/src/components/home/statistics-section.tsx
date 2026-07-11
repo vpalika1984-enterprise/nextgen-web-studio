@@ -38,7 +38,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix?: string }) {
                 }
 
                 const frame = requestAnimationFrame(tick);
-    </$1>     return () => cancelAnimationFrame(frame);
+         return () => cancelAnimationFrame(frame);
   }, [isInView, value]);
 
   return (
