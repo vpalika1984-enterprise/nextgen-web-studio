@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
-
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
+import { buildMetadata } from "@/lib/metadata";
 import { HeroSection } from "@/components/home/hero-section";
 import { TrustBar } from "@/components/home/trust-bar";
 import { StatisticsSection } from "@/components/home/statistics-section";
@@ -16,11 +15,18 @@ import { FaqSection } from "@/components/home/faq-section";
 import { NewsletterSection } from "@/components/home/newsletter-section";
 import { FinalCta } from "@/components/home/final-cta";
 
-export const metadata: Metadata = {
+/**
+ * Homepage metadata is built with the shared buildMetadata() helper (rather
+ * than an ad-hoc object) so it gets the full Open Graph image/canonical URL/
+ * Twitter card treatment that every other page receives, instead of only
+ * inheriting the generic root-layout values for those fields.
+ */
+export const metadata = buildMetadata({
   title: `${SITE_NAME} — ${SITE_TAGLINE}`,
   description:
     "NextGen Web Studio designs and engineers premium websites, AI solutions, and digital experiences for businesses across every industry.",
-};
+  path: "/",
+});
 
 /**
  * Homepage
