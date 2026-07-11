@@ -36,4 +36,5 @@ export function TrustBar() {
                         </div>
                 </Container>
           </Section>
-      
+          );
+}
