@@ -94,4 +94,5 @@ export function HeroSection() {
                         </motion.div>
                 </Container>
           </Section>
-      
+          );
+}
