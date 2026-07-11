@@ -58,3 +58,5 @@ export function PreviewGallery({ demo }: PreviewGalleryProps) {
               </Container>
         </Section>
       );
+
+}
