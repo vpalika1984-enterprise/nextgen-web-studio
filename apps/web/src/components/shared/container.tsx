@@ -1,7 +1,9 @@
+import * as React from "react";
+
 import { cn } from "@/lib/utils";
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }
 
 export function Container({ as: Tag = "div", className, children, ...props }: ContainerProps) {
