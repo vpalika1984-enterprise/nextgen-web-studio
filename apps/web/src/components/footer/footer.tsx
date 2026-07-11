@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Github, Linkedin, Sparkles, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, Sparkles, Twitter } from "lucide-react";
 
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
+import { SITE_NAME, SITE_TAGLINE, SOCIAL_LINKS } from "@/lib/constants";
 
 interface FooterColumn {
   title: string;
@@ -48,10 +48,16 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   },
 ];
 
+/**
+ * Social icon links pull from the canonical SOCIAL_LINKS constants (rather
+ * than hardcoding generic platform homepages) so they always point at the
+ * studio's real profiles.
+ */
 const SOCIAL_ICONS = [
-  { label: "Twitter", href: "https://twitter.com", icon: Twitter },
-  { label: "GitHub", href: "https://github.com", icon: Github },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
+  { label: "Twitter", href: SOCIAL_LINKS.twitter, icon: Twitter },
+  { label: "GitHub", href: SOCIAL_LINKS.github, icon: Github },
+  { label: "LinkedIn", href: SOCIAL_LINKS.linkedin, icon: Linkedin },
+  { label: "Instagram", href: SOCIAL_LINKS.instagram, icon: Instagram },
 ];
 
 /**
@@ -81,7 +87,7 @@ export function Footer() {
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                 >
