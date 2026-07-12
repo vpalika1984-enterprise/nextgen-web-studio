@@ -1,0 +1,88 @@
+import Link from "next/link";
+import { Facebook, Instagram } from "lucide-react";
+
+import { Container } from "@/components/shared/container";
+import { OPENING_HOURS, RESTAURANT_INFO } from "./restaurant-data";
+
+const FOOTER_LINKS = [
+  { label: "Menu", href: "#full-menu" },
+  { label: "Reservations", href: "#reserve" },
+  { label: "Contact", href: "#contact" },
+  ];
+
+/**
+ * Footer
+ *
+ * Restaurant-specific site footer: quick links, hours summary, social
+ * icons, and a small credit line back to the NextGen Web Studio demo
+ * listing.
+ */
+export function Footer() {
+    return (
+          <footer className="border-t border-white/10 bg-neutral-950 py-12 text-white">
+                <Container>
+                        <div className="grid gap-10 sm:grid-cols-3">
+                                  <div>
+                                              <p className="font-serif text-xl font-semibold">{RESTAURANT_INFO.name}</p>
+                                              <p className="mt-2 text-sm text-white/60">{RESTAURANT_INFO.address}</p>
+                                  </div>
+                                  <div>
+                                              <p className="text-xs font-semibold uppercase tracking-wide text-white/40">
+                                                            Quick Links
+                                              </p>
+                                              <ul className="mt-3 space-y-2 text-sm">
+                                                {FOOTER_LINKS.map((link) => (
+                            <li key={link.href}>
+                                              <a href={link.href} className="text-white/70 hover:text-white">
+                                                {link.label}
+                                              </a>
+                            </li>
+                          ))}
+                                              </ul>
+                                  </div>
+                                  <div>
+                                              <p className="text-xs font-semibold uppercase tracking-wide text-white/40">Hours</p>
+                                              <ul className="mt-3 space-y-2 text-sm text-white/70">
+                                                {OPENING_HOURS.map((row) => (
+                            <li key={row.days}>
+                              {row.days}: {row.hours}
+                            </li>
+                          ))}
+                                              </ul>
+                                              <div className="mt-4 flex gap-3">
+                                                            <a
+                                                                              href={RESTAURANT_INFO.instagramHref}
+                                                                              target="_blank"
+                                                                              rel="noreferrer"
+                                                                              aria-label="Instagram"
+                                                                              className="text-white/60 hover:text-white"
+                                                                            >
+                                                                            <Instagram className="h-5 w-5" aria-hidden="true" />
+                                                            </a>
+                                                            <a
+                                                                              href={RESTAURANT_INFO.facebookHref}
+                                                                              target="_blank"
+                                                                              rel="noreferrer"
+                                                                              aria-label="Facebook"
+                                                                              className="text-white/60 hover:text-white"
+                                                                            >
+                                                                            <Facebook className="h-5 w-5" aria-hidden="true" />
+                                                            </a>
+                                              </div>
+                                  </div>
+                        </div>
+                        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row">
+                                  <p>
+                                              &copy; {new Date().getFullYear()} {RESTAURANT_INFO.name}. All rights reserved.
+                                  </p>
+                                  <p>
+                                              A live demo by{" "}
+                                              <Link href="/live-demos/ember-and-oak" className="text-white/60 hover:text-white">
+                                                            NextGen Web Studio
+                                              </Link>
+                                  </p>
+                        </div>
+                </Container>
+          </footer>
+        );
+}
