@@ -109,8 +109,9 @@ export const DEMOS: Demo[] = [
                       "A patient-first clinic site with self-serve appointment booking and provider directories.",
             features: ["Appointment scheduling", "Provider directory", "HIPAA-conscious intake forms"],
             technologies: ["Next.js", "Clerk", "Supabase"],
-            liveUrl: "https://demo.nextgenwebstudio.com/northshore-family-medicine",
+            liveUrl: "/demo-sites/northshore-family-medicine",
             detailsHref: "/live-demos/northshore-family-medicine",
+            status: ["live", "production-ready"],
             businessBenefits: [
                       "Cut no-show rates with automated appointment reminders",
                       "Reduce front-desk call volume with self-serve booking",
