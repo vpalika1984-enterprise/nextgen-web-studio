@@ -83,7 +83,7 @@ export const INDUSTRIES: Industry[] = [
               ],
         technologies: ["Next.js", "Clerk", "Supabase"],
         startingAt: "$4,500",
-        cta: { label: "View Demo Details", href: "/live-demos/northshore-family-medicine" },
+        cta: { label: "View Live Demo", href: "/live-demos/northshore-family-medicine", isLiveDemo: true },
   },
   {
         id: "real-estate",
