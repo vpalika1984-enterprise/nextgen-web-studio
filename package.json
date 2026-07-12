@@ -1,18 +1,18 @@
 {
-  "name": "nextgen-web-studio",
-  "private": true,
-  "workspaces": [
-    "apps/*"
-  ],
-  "scripts": {
-    "dev": "npm run dev --workspace=@nextgen/web",
-    "build": "npm run build --workspace=@nextgen/web",
-    "start": "npm run start --workspace=@nextgen/web",
-    "lint": "npm run lint --workspace=@nextgen/web",
-    "format": "npm run format --workspace=@nextgen/web",
-    "prepare": "husky"
-  },
-  "devDependencies": {
-    "husky": "9.1.7"
-  }
+    "name": "nextgen-web-studio",
+    "private": true,
+    "workspaces": [
+          "apps/*"
+    ],
+    "scripts": {
+          "dev": "npm run dev --workspace=@nextgen/web",
+          "build": "npm run build --workspace=@nextgen/web",
+          "start": "npm run start --workspace=@nextgen/web",
+          "lint": "npm run lint --workspace=@nextgen/web",
+          "format": "npm run format --workspace=@nextgen/web",
+          "prepare": "node .husky/install.mjs"
+    },
+    "devDependencies": {
+          "husky": "9.1.7"
+    }
 }
