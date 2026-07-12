@@ -1,4 +1,4 @@
-export type DemoStatus = "featured" | "new" | "coming-soon";
+export type DemoStatus = "featured" | "new" | "coming-soon" | "live" | "production-ready";
 
 export interface DemoMediaItem {
       type: "image" | "video";
@@ -42,7 +42,7 @@ export interface Demo {
       liveUrl: string;
       detailsHref: string;
       featured?: boolean;
-      status?: DemoStatus;
+      status?: DemoStatus[];
       businessBenefits?: string[];
       targetIndustries?: string[];
       media?: DemoMediaItem[];
@@ -84,10 +84,10 @@ export const DEMOS: Demo[] = [
                       "A menu-forward fine dining site with real-time reservations and online ordering built in.",
             features: ["Live table reservations", "Online ordering", "Seasonal menu CMS"],
             technologies: ["Next.js", "Stripe", "Supabase"],
-            liveUrl: "https://demo.nextgenwebstudio.com/ember-and-oak",
+            liveUrl: "/demo-sites/ember-and-oak",
             detailsHref: "/live-demos/ember-and-oak",
             featured: true,
-            status: "featured",
+            status: ["featured", "live", "production-ready"],
             businessBenefits: [
                       "Reduce phone-in reservation workload",
                       "Increase average order value with online upsells",
@@ -158,7 +158,7 @@ export const DEMOS: Demo[] = [
             liveUrl: "https://demo.nextgenwebstudio.com/summit-realty-group",
             detailsHref: "/live-demos/summit-realty-group",
             featured: true,
-            status: "featured",
+            status: ["featured"],
             businessBenefits: [
                       "Generate qualified buyer leads around the clock",
                       "Keep agents focused on hot leads with automated routing",
@@ -252,7 +252,7 @@ export const DEMOS: Demo[] = [
             liveUrl: "https://demo.nextgenwebstudio.com/askher-ai-copilot",
             detailsHref: "/live-demos/askher-ai-copilot",
             featured: true,
-            status: "featured",
+            status: ["featured"],
             businessBenefits: [
                       "Convert trial users with transparent usage dashboards",
                       "Automate recurring revenue with built-in subscription billing",
@@ -276,7 +276,7 @@ export const DEMOS: Demo[] = [
             technologies: ["Next.js", "Supabase", "React Query"],
             liveUrl: "https://demo.nextgenwebstudio.com/fieldnote-workflow-ai",
             detailsHref: "/live-demos/fieldnote-workflow-ai",
-            status: "new",
+            status: ["new"],
             businessBenefits: [
                       "Cut manual ticket triage time with AI-assisted routing",
                       "Improve team throughput with workflow automation",
