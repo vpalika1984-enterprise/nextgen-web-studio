@@ -60,8 +60,6 @@ export interface Property {
     description: string;
     featured: boolean;
 }
-  featured: boolean;
-}
 
 export const PROPERTIES: Property[] = [
   {
