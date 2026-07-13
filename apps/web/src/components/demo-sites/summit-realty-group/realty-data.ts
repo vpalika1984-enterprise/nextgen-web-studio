@@ -7,6 +7,11 @@
  * throughout the demo site's components.
  */
 
+import type { CalculatorConfig } from "@/lib/calculators";
+import { calculateAmortization } from "@/lib/calculators";
+import type { ListingSearchConfig } from "@/lib/listing-search";
+
+
 export const AGENCY_INFO = {
     name: "Summit Realty Group",
     tagline: "Elevated Living, Expertly Guided",
@@ -456,3 +461,106 @@ export const REALTY_FAQS: RealtyFaq[] = [
                 "Most listings go live within 5-7 days of our initial consultation, once photography, staging recommendations, and pricing analysis are complete.",
   },
   ];
+
+export const MORTGAGE_CALCULATOR_CONFIG: CalculatorConfig = {
+      mode: "mortgage",
+      title: "Mortgage Calculator",
+      description:
+              "Estimate your monthly principal and interest payment. This tool provides estimates only and does not include taxes, insurance, or HOA dues.",
+      fields: [
+          {
+                    key: "homePrice",
+                    label: "Home Price",
+                    type: "currency",
+                    defaultValue: 450000,
+                    min: 50000,
+                    max: 2000000,
+                    step: 5000,
+          },
+          {
+                    key: "downPayment",
+                    label: "Down Payment",
+                    type: "currency",
+                    defaultValue: 90000,
+                    min: 0,
+                    max: 1000000,
+                    step: 5000,
+          },
+          {
+                    key: "interestRate",
+                    label: "Interest Rate",
+                    type: "percent",
+                    defaultValue: 6.5,
+                    min: 1,
+                    max: 15,
+                    step: 0.1,
+          },
+          {
+                    key: "loanTerm",
+                    label: "Loan Term",
+                    type: "years",
+                    defaultValue: 30,
+                    min: 5,
+                    max: 40,
+                    step: 5,
+          },
+            ],
+      resultFields: [
+          { key: "monthlyPayment", label: "Est. Monthly Payment", format: "currency", emphasis: true },
+          { key: "loanAmount", label: "Loan Amount", format: "currency" },
+          { key: "totalInterest", label: "Total Interest", format: "currency" },
+          { key: "totalPayment", label: "Total Payment", format: "currency" },
+            ],
+      compute: (values) => {
+              const amortization = calculateAmortization({
+                        principal: Math.max(values.homePrice - values.downPayment, 0),
+                        annualInterestRate: values.interestRate,
+                        termYears: values.loanTerm,
+              });
+
+        return {
+                  monthlyPayment: amortization.monthlyPayment,
+                  loanAmount: amortization.principal,
+                  totalInterest: amortization.totalInterest,
+                  totalPayment: amortization.totalPayment,
+        };
+      },
+      disclaimer:
+              "This calculator provides estimates only and does not constitute financial advice. Contact an agent for a personalized quote.",
+};
+
+export const PROPERTY_SEARCH_CONFIG: ListingSearchConfig<Property> = {
+      searchPlaceholder: "Search by property name, address, or city...",
+      searchKeys: ["title", "address", "city", "description"],
+      filters: [
+          {
+                    key: "category",
+                    label: "Property Type",
+                    type: "select",
+                    options: PROPERTY_CATEGORIES.map((category) => ({
+                                value: category.slug,
+                                label: category.label,
+                    })),
+          },
+          {
+                    key: "listingType",
+                    label: "Listing Type",
+                    type: "select",
+                    options: [
+                        { value: "For Sale", label: "For Sale" },
+                        { value: "For Rent", label: "For Rent" },
+                              ],
+          },
+          {
+                    key: "beds",
+                    label: "Bedrooms",
+                    type: "select",
+                    options: [
+                        { value: "1", label: "1+ Beds" },
+                        { value: "2", label: "2+ Beds" },
+                        { value: "3", label: "3+ Beds" },
+                        { value: "4", label: "4+ Beds" },
+                              ],
+          },
+            ],
+};
