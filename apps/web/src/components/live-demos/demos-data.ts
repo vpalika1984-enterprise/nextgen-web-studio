@@ -156,10 +156,10 @@ export const DEMOS: Demo[] = [
                       "An IDX-integrated brokerage site with saved searches, mortgage tools, and agent lead routing.",
             features: ["IDX/MLS listings", "Mortgage calculator", "Agent lead routing"],
             technologies: ["Next.js", "React Query", "Supabase"],
-            liveUrl: "https://demo.nextgenwebstudio.com/summit-realty-group",
+            liveUrl: "/demo-sites/summit-realty-group",
             detailsHref: "/live-demos/summit-realty-group",
             featured: true,
-            status: ["featured"],
+            status: ["featured", "live", "production-ready"],
             businessBenefits: [
                       "Generate qualified buyer leads around the clock",
                       "Keep agents focused on hot leads with automated routing",
