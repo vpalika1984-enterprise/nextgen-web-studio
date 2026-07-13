@@ -105,7 +105,7 @@ export const INDUSTRIES: Industry[] = [
               ],
         technologies: ["Next.js", "React Query", "Supabase"],
         startingAt: "$4,000",
-        cta: { label: "View Demo Details", href: "/live-demos/summit-realty-group" },
+        cta: { label: "View Live Demo", href: "/live-demos/summit-realty-group", isLiveDemo: true },
   },
   {
         id: "hospitality",
