@@ -512,10 +512,14 @@ export const MORTGAGE_CALCULATOR_CONFIG: CalculatorConfig = {
           { key: "totalPayment", label: "Total Payment", format: "currency" },
             ],
       compute: (values) => {
+              const homePrice = values.homePrice ?? 0;
+              const downPayment = values.downPayment ?? 0;
+              const interestRate = values.interestRate ?? 0;
+              const loanTerm = values.loanTerm ?? 0;
               const amortization = calculateAmortization({
-                        principal: Math.max(values.homePrice - values.downPayment, 0),
-                        annualInterestRate: values.interestRate,
-                        termYears: values.loanTerm,
+                          principal: Math.max(homePrice - downPayment, 0),
+                          annualInterestRate: interestRate,
+                          termYears: loanTerm,
               });
 
         return {
