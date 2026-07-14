@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { FinancialCalculator } from "@/components/demo-sites/shared/financial-calculator";
