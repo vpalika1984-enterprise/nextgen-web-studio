@@ -63,7 +63,7 @@ export interface Property {
     category: PropertyCategorySlug;
     imageAlt: string;
     description: string;
-    featured: boolean;
+    featured: boolean; [key: string]: unknown;
 }
 
 export const PROPERTIES: Property[] = [
