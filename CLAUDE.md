@@ -98,6 +98,10 @@ mini-site under `/demo-sites/<slug>`, surfaced in the marketing site's
   Unused vars are a warning unless prefixed with `_`.
 - No comments explaining *what* code does; only add a comment where the
   *why* is non-obvious.
+- **AI/LLM integrations always go through `apps/web/src/lib/ai-service`.**
+  No feature, route, or component imports an LLM provider SDK (Vercel AI
+  SDK provider packages, or any vendor SDK) directly — only that layer may.
+  See `docs/architecture/ai-service-layer.md` for the full pattern.
 
 ## Verification Checklist
 
